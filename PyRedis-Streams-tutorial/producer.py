@@ -38,7 +38,7 @@ def send_data(redis_connection,max_msgs):
             # random data
             data = {
                 "producer": PRODUCER,
-                "some_id": uuid4().hex,  # Just some random data
+                "some_id": uuid4().hex + " ----- to stream-test",  # Just some random data
                 "count": count,
             }
 
