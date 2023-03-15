@@ -3,16 +3,7 @@ from sqlalchemy import (Column, Integer, MetaData, String, Table,
     create_engine, ARRAY)
 from databases import Database
 
-# from dotenv import load_dotenv
-# load_dotenv()
-
-# manage connection with database
-# print(os.environ.get('TEST_ENV'))
-
-# DATABASE_NAME = os.environ.get('DATABASE_NAME')
-# DATABASE_PASSWORD = os.environ.get('DATABASE_PASSWORD')
-
-DATABASE_URL= f"postgresql://postgres:mea4545Luda@localhost/movies_microservice_db"
+DATABASE_URL= "postgresql://postgres:mea4545Luda@localhost/movies_microservice_db"
 
 try:
     engine=create_engine(DATABASE_URL)

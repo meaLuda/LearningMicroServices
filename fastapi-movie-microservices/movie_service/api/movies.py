@@ -1,3 +1,4 @@
+import os
 from typing import List
 from fastapi import Header, APIRouter,HTTPException
 
@@ -17,10 +18,14 @@ fake_movie_db = [
     }
 ]
 
+def get_env(variable):
+    return os.environ[variable]
 
 # root
 @movie.get('/')
 async def index():
+    print(get_env("LOCAL_DEVELOPMENT"))
+    print(get_env("DATABASE_URI"))
     return {
         "Index":"Microservices with Python."
     }

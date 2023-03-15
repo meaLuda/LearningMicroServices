@@ -1,8 +1,8 @@
 from fastapi import FastAPI
-
+from dotenv import load_dotenv
 # get movies api router
-from .api.movies import movie
-from .api.db import metadata,database,engine
+from api.movies import movie
+from api.db import metadata,database,engine
 
 metadata.create_all(engine)
 
@@ -12,6 +12,7 @@ app = FastAPI()
 @app.on_event("startup")
 async def startup():
     try:
+        load_dotenv(".env")
         await database.connect()
         print("--------- DB connection success ----------")
     except ConnectionRefusedError as e:
