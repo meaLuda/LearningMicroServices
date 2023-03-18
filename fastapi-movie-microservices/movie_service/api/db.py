@@ -3,8 +3,8 @@ from sqlalchemy import (Column, Integer, MetaData, String, Table,
     create_engine, ARRAY)
 from databases import Database
 
-DATABASE_URL= "postgresql://postgres:mea4545Luda@localhost/movies_microservice_db"
-
+# DATABASE_URL= "postgresql://postgres:mea4545Luda@localhost:5432/movies_microservice_db"
+DATABASE_URL= os.environ['DATABASE_URL']
 try:
     engine=create_engine(DATABASE_URL)
 

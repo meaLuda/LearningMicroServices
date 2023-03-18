@@ -12,7 +12,7 @@ app = FastAPI()
 @app.on_event("startup")
 async def startup():
     try:
-        load_dotenv(".env")
+        load_dotenv()
         await database.connect()
         print("--------- DB connection success ----------")
     except ConnectionRefusedError as e:

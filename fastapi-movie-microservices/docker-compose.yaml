@@ -1,22 +1,16 @@
-# run all micriservices in docker-compose
 version: '3.7'
 
 services:
-  # Movie Service
   movie_service:
     build: ./movie_service
-    # onnce the image is built, we can run the container
     command: uvicorn main:app --host 0.0.0.0 --port 8000
     volumes:
       - ./movie_service:/movie_servies
     ports:
-      # map container port 8000 to host port 8000
       - 8000:8000
-    # set environment variables
     environment:
-      # - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/postgres
       - CONTAINER_TEST_MOVIE_SERVICE=1
-  # cast service
+      - DATABASE_URL=postgresql://postgres:mea4545Luda@127.0.0.1:5432/movies_microservice_db
   cast_service:
     build: ./cast_service
     command: uvicorn main:app --host 0.0.0.0 --port 8001
@@ -25,15 +19,14 @@ services:
     ports:
       - 8001:8001
     environment:
-      # - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/postgres
       - CONTAINER_TEST_CAST_SERVICE=1
-  
-nginx:
-    image: nginx:latest
-    ports:
-      - 8080:8080
-    volumes:
-      - ./nginx_microservice_config.conf:/etc/nginx/conf.d/default.conf
-    depends_on:
-      -movie_service
-      -cast_service
+      - DATABASE_URL=postgresql://postgres:mea4545Luda@127.0.0.1:5432/movies_microservice_db
+  # nginx:
+  #   image: nginx:latest
+  #   ports:
+  #     - 8080:8080
+  #   volumes:
+  #     - ./nginx_microservice_config.conf:/etc/nginx/conf.d/default.conf
+  #   depends_on:
+  #     - cast_service
+  #     - movie_service

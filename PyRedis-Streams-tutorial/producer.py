@@ -2,8 +2,6 @@
 It sends a python dict (producer, some_id, count)
 to REDIS STREAM (using the xadd method)
 
-Usage:
-  PRODUCER=Roger MESSAGES=10 python producer.py
 """
 from os import environ
 from redis import Redis
